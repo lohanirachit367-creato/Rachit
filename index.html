@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Welcome to the portfolio of Rachit Lohani - Full Stack Developer. Explore web development projects, skills, and expertise.">
+  <meta name="keywords" content="Portfolio, Full Stack Developer, HTML, CSS, JavaScript, PHP, MySQL, Web Development">
+  <meta name="author" content="Rachit Lohani">
+  <meta name="copyright" content="Copyright © 2025">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="shortcut icon" href="assests/images/favicon.png" type="image/x-icon">
+  <title>Home - Portfolio</title>
+  <style>
+    :root {
+      --primary-color: #FFD700; /* Gold */
+      --secondary-color: #1A2A44; /* Deep Navy */
+      --text-color: #F5F5F5; /* Cream */
+      --bg-color: #0F1C33; /* Darker Navy */
+      --accent-color: #D4A017; /* Darker Gold */
+    }
+    [data-theme="light"] {
+      --primary-color: #FFD700;
+      --secondary-color: #F5F5F5;
+      --text-color: #1A2A44;
+      --bg-color: #FFFFFF;
+      --accent-color: #D4A017;
+    }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Playfair Display', serif;
+      transition: all 0.3s ease;
+    }
+    .navbar {
+      background-color: var(--secondary-color);
+      padding: 1.2rem 2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      border-bottom: 2px solid var(--primary-color);
+    }
+    .navbar-brand img {
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .navbar-brand img:hover {
+      transform: scale(1.1);
+      filter: brightness(1.2);
+    }
+    .nav-link {
+      color: var(--primary-color) !important;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover {
+      color: var(--accent-color) !important;
+    }
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      padding: 6rem 0;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 3px solid var(--accent-color);
+    }
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,215,0,0.3) 0%, rgba(255,215,0,0) 70%);
+      z-index: 0;
+    }
+    .hero-section h1, .hero-section p {
+      position: relative;
+      z-index: 1;
+    }
+    .tech-card {
+      background: var(--secondary-color);
+      border: 1px solid var(--primary-color);
+      border-radius: 20px;
+      padding: 2.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .tech-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+    .tech-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+    .tech-card:hover::before {
+      width: 100%;
+    }
+    .theme-toggle {
+      cursor: pointer;
+      font-size: 1.8rem;
+      padding: 0.6rem;
+      color: var(--primary-color);
+      transition: color 0.3s ease;
+    }
+    .theme-toggle:hover {
+      color: var(--accent-color);
+    }
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--primary-color);
+      color: var(--secondary-color);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      border: 2px solid var(--accent-color);
+    }
+    .scroll-top.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .scroll-top:hover {
+      transform: scale(1.1);
+    }
+    footer {
+      background: var(--secondary-color);
+      padding: 4rem 0;
+      border-top: 3px solid var(--primary-color);
+    }
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: var(--accent-color);
+    }
+    .btn-outline-primary {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+    .btn-outline-primary:hover {
+      background: var(--primary-color);
+      color: var(--secondary-color);
+    }
+    .btn-warning {
+      background: var(--primary-color);
+      border-color: var(--primary-color);
+      color: var(--secondary-color);
+    }
+    .btn-warning:hover {
+      background: var(--accent-color);
+      border-color: var(--accent-color);
+    }
+    h1, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+    p {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.8;
+    }
+    .list-group-item {
+      background: var(--secondary-color);
+      color: var(--text-color);
+      border-color: var(--primary-color);
+    }
+    .list-unstyled i {
+      color: var(--primary-color);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand fs-4 fw-bold" href="#">
+        <img src="assests/images/logo.png" alt="" width="70" class="rounded-3">
+        Portfolio
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-5">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="full stack.html">What is Full Stack?</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="html.html">HTML</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="css.html">CSS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="js.html">JavaScript</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="bs.html">Bootstrap</a>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center">
+          <i class="fas fa-moon theme-toggle me-3" id="theme-toggle"></i>
+          <a class="btn btn-outline-primary me-2" href="#">Log in</a>
+          <a class="btn btn-outline-primary" href="#">Register</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero-section text-light text-center">
+    <div class="container py-5">
+      <h1 class="display-5 fw-bold">Welcome to My Portfolio</h1>
+      <p class="lead col-md-8 mx-auto mt-3">
+        I’m Rachit Lohani, a passionate Full Stack Developer. Explore my journey, projects, and skills in web development.  
+        Let’s build modern, scalable, and interactive applications together!
+      </p>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <div class="container py-5 my-5">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="tech-card text-center">
+          <h2 class="mb-4">About Me</h2>
+          <p class="lead">
+            I specialize in both front-end and back-end technologies, creating complete web applications that are functional, scalable, and user-friendly. 
+            From UI design with HTML, CSS, and Bootstrap to back-end logic with PHP and MySQL, I love turning ideas into digital reality.
+          </p>
+          <a href="full stack.html" class="btn btn-outline-primary mt-3">Explore My Skills</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services Section -->
+  <div class="container py-5">
+    <h2 class="text-center mb-5">What I Do</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="tech-card text-center">
+          <i class="fas fa-code fa-3x mb-3"></i>
+          <h4>Front-End Development</h4>
+          <p>Creating engaging, responsive, and visually appealing user interfaces with HTML, CSS, JavaScript, and Bootstrap.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="tech-card text-center">
+          <i class="fas fa-server fa-3x mb-3"></i>
+          <h4>Back-End Development</h4>
+          <p>Building robust server-side applications with PHP and integrating databases like MySQL for seamless data management.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="tech-card text-center">
+          <i class="fas fa-laptop-code fa-3x mb-3"></i>
+          <h4>Full Stack Projects</h4>
+          <p>Delivering end-to-end solutions that combine both front-end and back-end for dynamic and interactive web applications.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center py-5">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-md-2">
+          <h6 class="text-uppercase"><a href="index.html">Home</a></h6>
+        </div>
+        <div class="col-md-2">
+          <h6 class="text-uppercase"><a href="full stack.html">What is Full Stack?</a></h6>
+        </div>
+        <div class="col-md-2">
+          <h6 class="text-uppercase"><a href="html.html">HTML</a></h6>
+        </div>
+        <div class="col-md-2">
+          <h6 class="text-uppercase"><a href="css.html">CSS</a></h6>
+        </div>
+        <div class="col-md-2">
+          <h6 class="text-uppercase"><a href="js.html">JavaScript</a></h6>
+        </div>
+        <div class="col-md-2">
+          <h6 class="text-uppercase"><a href="bs.html">Bootstrap</a></h6>
+        </div>
+      </div>
+      <hr class="my-4" style="border-color: var(--primary-color);">
+      <div class="mb-4">
+        <a href="#" class="me-4"><i class="fab fa-facebook-f fa-lg"></i></a>
+        <a href="#" class="me-4"><i class="fab fa-twitter fa-lg"></i></a>
+        <a href="#" class="me-4"><i class="fab fa-linkedin-in fa-lg"></i></a>
+        <a href="#" class="me-4"><i class="fab fa-instagram fa-lg"></i></a>
+        <a href="https://wa.me/9779846164663"><i class="fab fa-whatsapp fa-lg"></i></a>
+      </div>
+      <p>All &copy; Rights Reserved @ 2025</p>
+      <p>Powered By: <a href="#">Rachit</a></p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top -->
+  <div class="scroll-top hidden" id="scroll-top">
+    <a href="#"><i class="fas fa-arrow-up"></i></a>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.dataset.theme = document.body.dataset.theme === 'light' ? 'dark' : 'light';
+      themeToggle.classList.toggle('fa-moon');
+      themeToggle.classList.toggle('fa-sun');
+    });
+
+    // Scroll to Top
+    $(window).scroll(function() {
+      $('#scroll-top').toggleClass('hidden', $(window).scrollTop() <= 150);
+    });
+
+    $('#scroll-top').click(function() {
+      $('html, body').animate({ scrollTop: 0 }, 'smooth');
+    });
+  </script>
+</body>
+</html>

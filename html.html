@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Learn about HTML, the backbone of web development, including its structure, semantic elements, and modern features for building accessible websites.">
+  <meta name="keywords" content="HTML, Web Development, Semantic HTML, Full Stack Development, Web Structure, Accessibility">
+  <meta name="author" content="Rachit Lohani">
+  <meta name="copyright" content="Copyright © 2025">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="shortcut icon" href="assests/images/favicon.png" type="image/x-icon">
+  <title>HTML - Portfolio</title>
+  <style>
+    :root {
+      --primary-color: #FFD700; /* Gold */
+      --secondary-color: #1A2A44; /* Deep Navy */
+      --text-color: #F5F5F5; /* Cream */
+      --bg-color: #0F1C33; /* Darker Navy */
+      --accent-color: #D4A017; /* Darker Gold */
+    }
+    [data-theme="light"] {
+      --primary-color: #FFD700;
+      --secondary-color: #F5F5F5;
+      --text-color: #1A2A44;
+      --bg-color: #FFFFFF;
+      --accent-color: #D4A017;
+    }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Playfair Display', serif;
+      transition: all 0.3s ease;
+    }
+    .navbar {
+      background-color: var(--secondary-color);
+      padding: 1.2rem 2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      border-bottom: 2px solid var(--primary-color);
+    }
+    .navbar-brand img {
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .navbar-brand img:hover {
+      transform: scale(1.1);
+      filter: brightness(1.2);
+    }
+    .nav-link {
+      color: var(--primary-color) !important;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover {
+      color: var(--accent-color) !important;
+    }
+    .title-section {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      padding: 4rem 0;
+      border-bottom: 3px solid var(--accent-color);
+    }
+    .content-card {
+      background: var(--secondary-color);
+      border: 1px solid var(--primary-color);
+      border-radius: 20px;
+      padding: 2.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .content-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+    .content-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+    .content-card:hover::before {
+      width: 100%;
+    }
+    .theme-toggle {
+      cursor: pointer;
+      font-size: 1.8rem;
+      padding: 0.6rem;
+      color: var(--primary-color);
+      transition: color 0.3s ease;
+    }
+    .theme-toggle:hover {
+      color: var(--accent-color);
+    }
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--primary-color);
+      color: var(--secondary-color);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      border: 2px solid var(--accent-color);
+    }
+    .scroll-top.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .scroll-top:hover {
+      transform: scale(1.1);
+    }
+    footer {
+      background: var(--secondary-color);
+      padding: 4rem 0;
+      border-top: 3px solid var(--primary-color);
+    }
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: var(--accent-color);
+    }
+    .btn-outline-primary {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+    .btn-outline-primary:hover {
+      background: var(--primary-color);
+      color: var(--secondary-color);
+    }
+    h1, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+    p, li, pre {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.8;
+    }
+    pre {
+      background: var(--bg-color);
+      border: 1px solid var(--primary-color);
+      border-radius: 10px;
+      padding: 1.5rem;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand fs-4 fw-bold" href="#">
+        <img src="assests/images/logo.png" alt="" width="70" class="rounded-3">
+        Portfolio
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-5">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="full stack.html">What is Full Stack?</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="html.html">HTML</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="css.html">CSS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="js.html">JavaScript</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="bs.html">Bootstrap</a>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center">
+          <i class="fas fa-moon theme-toggle me-3" id="theme-toggle"></i>
+          <a class="btn btn-outline-primary me-2" href="#">Log in</a>
+          <a class="btn btn-outline-primary" href="#">Register</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Title Section -->
+  <div class="title-section text-light text-center" style="margin-top: 80px;">
+    <div class="container py-5">
+      <h1 class="display-5 fw-bold">HTML: The Foundation of Web Development</h1>
+    </div>
+  </div>
+
+  <!-- Content Section -->
+  <div class="container py-5 my-5">
+    <div class="row g-4">
+      <div class="col-12">
+        <div class="content-card">
+          <h3>What is HTML?</h3>
+          <p>
+            HTML (HyperText Markup Language) is the standard language for creating web pages. It provides the structure and content of a website, using tags to define elements like headings, paragraphs, images, links, and forms. HTML5, the latest version, introduces advanced features like semantic elements, multimedia support, and APIs for modern web applications.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="content-card">
+          <h3>Key Features of HTML</h3>
+          <ul>
+            <li><strong>Semantic Structure:</strong> Tags like &lt;header&gt;, &lt;footer&gt;, and &lt;article&gt; improve accessibility and SEO.</li>
+            <li><strong>Multimedia Support:</strong> Embed audio, video, and images with &lt;audio&gt;, &lt;video&gt;, and &lt;img&gt; tags.</li>
+            <li><strong>Forms and Input:</strong> Create interactive forms with &lt;form&gt;, &lt;input&gt;, and new input types like email and date.</li>
+            <li><strong>Cross-Platform Compatibility:</strong> Works across browsers and devices for universal access.</li>
+            <li><strong>APIs:</strong> HTML5 supports APIs like Canvas, Geolocation, and Web Storage for dynamic applications.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="content-card">
+          <h3>Simple HTML Example</h3>
+          <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Sample Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Welcome to My Website&lt;/h1&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;article&gt;
+      &lt;h2&gt;About Us&lt;/h2&gt;
+      &lt;p&gt;This is a sample HTML page.&lt;/p&gt;
+    &lt;/article&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;
+    &lt;p&gt;&copy; 2025 My Website&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+          </pre>
+          <a class="btn btn-outline-primary" href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_default" target="_blank">Try It Yourself</a>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="content-card">
+          <h3>Why Learn HTML?</h3>
+          <p>
+            HTML is the foundation of all web development. Mastering HTML allows you to:
+          </p>
+          <ul>
+            <li>Create well-structured, accessible websites.</li>
+            <li>Enhance SEO with semantic markup.</li>
+            <li>Integrate with CSS and JavaScript for dynamic experiences.</li>
+            <li>Build a strong base for learning advanced frameworks and technologies.</li>
+          </ul>
+          <p>
+            Whether you're a beginner or an experienced developer, HTML is essential for creating modern, user-friendly websites.
+          </p>
+          <a class="btn btn-outline-primary" href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">Explore HTML Documentation</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center py-5">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-md-2">
+          <h6 class="text-uppercase"><a href="index.html">Home</a></h6>
+        </div>
+        <div class="col-md-2">
+          <h6 class="text-uppercase"><a href="full stack.html">Full Stack</a></h6>
+        </div>
+        <div class="col-md-2">
+          <h6 class="text-uppercase"><a href="html.html">HTML</a></h6>
+        </div>
+        <div class="col-md-2">
+          <h6 class="text-uppercase"><a href="css.html">CSS</a></h6>
+        </div>
+        <div class="col-md-2">
+          <h6 class="text-uppercase"><a href="js.html">JavaScript</a></h6>
+        </div>
+        <div class="col-md-2">
+          <h6 class="text-uppercase"><a href="bs.html">Bootstrap</a></h6>
+        </div>
+      </div>
+      <hr class="my-4" style="border-color: var(--primary-color);">
+      <div class="mb-4">
+        <a href="#" class="me-4"><i class="fab fa-facebook-f fa-lg"></i></a>
+        <a href="#" class="me-4"><i class="fab fa-twitter fa-lg"></i></a>
+        <a href="#" class="me-4"><i class="fab fa-linkedin-in fa-lg"></i></a>
+        <a href="#" class="me-4"><i class="fab fa-instagram fa-lg"></i></a>
+        <a href="https://wa.me/9779846164663"><i class="fab fa-whatsapp fa-lg"></i></a>
+      </div>
+      <p>All &copy; Rights Reserved @ 2025</p>
+      <p>Powered By: <a href="#">Rachit</a></p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top -->
+  <div class="scroll-top hidden" id="scroll-top">
+    <a href="#"><i class="fas fa-arrow-up"></i></a>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.dataset.theme = document.body.dataset.theme === 'light' ? 'dark' : 'light';
+      themeToggle.classList.toggle('fa-moon');
+      themeToggle.classList.toggle('fa-sun');
+    });
+
+    // Scroll to Top
+    $(window).scroll(function() {
+      $('#scroll-top').toggleClass('hidden', $(window).scrollTop() <= 150);
+    });
+
+    $('#scroll-top').click(function() {
+      $('html, body').animate({ scrollTop: 0 }, 'smooth');
+    });
+  </script>
+</body>
+</html>
